@@ -33,6 +33,7 @@
   aspect-ratio:2400 / 800; max-height:640px; max-width:1920px; margin-inline:auto;}
 .hero-slider .slide{position:absolute; inset:0; margin:0; opacity:0; transition:opacity .5s var(--ease);}
 .hero-slider .slide[aria-hidden="false"]{opacity:1;}
+.hero-slider .slide picture{display:block; width:100%; height:100%;}
 .hero-slider .slide img{display:block; width:100%; height:100%; object-fit:cover; object-position:center;}
 /* Phóng chậm (Ken Burns) trong lúc slide đang hiện — chỉ chạy khi trình duyệt
    không báo prefers-reduced-motion, và chỉ trên ảnh của slide đang bật để không
@@ -91,11 +92,10 @@
 .hero-slider:not(.is-ready) .hero-controls{display:none;}
 
 @media (max-width:760px){
-  /* Banner nguồn đều là 3:1. Giữ đúng tỷ lệ và contain để mobile thấy trọn
-     ảnh, không cắt phần chữ hoặc chủ thể. Tắt Ken Burns vì scale(1.06) cũng
-     làm mất viền ảnh dù object-fit đã là contain. */
-  .hero-slider{aspect-ratio:3 / 1;}
-  .hero-slider .slide img{object-fit:contain; object-position:center; animation:none!important; transform:none!important;}
+  /* Mobile dùng bộ ảnh dọc 3:4 riêng, vì vậy toàn bộ ảnh, chữ và chủ thể đều
+     hiện đúng bố cục đã thiết kế mà không phải cắt ảnh desktop 3:1. */
+  .hero-slider{aspect-ratio:3 / 4; max-height:none;}
+  .hero-slider .slide img{object-fit:cover; object-position:center; animation:none!important; transform:none!important;}
   /* Mũi tên và hàng chấm về chung một hàng dưới đáy, không đè lên chữ trong ảnh */
   .hero-controls{inset:auto 0 var(--sp-4) 0; display:flex; align-items:center; justify-content:center; gap:var(--sp-5);}
   .hero-arrow,.hero-dots{position:static; transform:none;}
