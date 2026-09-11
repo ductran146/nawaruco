@@ -297,10 +297,14 @@ main > .section:last-of-type{padding-bottom:var(--gap-box);}
 
 /* ---------- Thẻ dịch vụ dạng lớn (trang Dịch vụ) ---------- */
 .svc-card{padding:var(--sp-5);}
-.svc-card>.img-ph{aspect-ratio:15 / 8; margin-bottom:var(--sp-5);}
+.svc-card>.img-ph{aspect-ratio:21 / 8; margin-bottom:var(--sp-5);}
 .svc-card h2,.svc-card h3{font-size:var(--fs-lg); color:var(--brand-strong); margin-bottom:var(--sp-3);} /* h2 khi .svc-card đứng ngay dưới h1 (dich-vu.html), h3 khi dưới h2 (index.html) */
 .svc-card>p{font-size:var(--fs-base); color:var(--text-secondary); margin-bottom:var(--sp-4);}
 .svc-card .check-list{margin-bottom:var(--sp-5);}
+/* Trang tổng quan dịch vụ: nội dung nằm trực tiếp trên nền trang, không lồng
+   panel và card. Ảnh vẫn tạo điểm phân nhóm, còn khoảng trắng thay cho khung. */
+.svc-overview{align-items:start;}
+.svc-overview .svc-card{padding:0; background:transparent; border:0; box-shadow:none;}
 
 /* ---------- Tỉ lệ khung ảnh dùng lại ---------- */
 .media-16-9{aspect-ratio:16 / 9;}

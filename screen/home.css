@@ -91,12 +91,11 @@
 .hero-slider:not(.is-ready) .hero-controls{display:none;}
 
 @media (max-width:760px){
-  /* Ảnh ngang 2.33:1 thu về 375px chỉ còn 161px cao — chữ trong ảnh nhỏ không
-     đọc được. Đổi sang khung 4:3 và neo ảnh về bên trái: phần chữ được phóng
-     to và giữ nguyên, phần ảnh bên phải bị cắt. Muốn không cắt thì cần một bản
-     ảnh dọc riêng cho điện thoại. */
-  .hero-slider{aspect-ratio:4 / 3;}
-  .hero-slider .slide img{object-position:left center;}
+  /* Banner nguồn đều là 3:1. Giữ đúng tỷ lệ và contain để mobile thấy trọn
+     ảnh, không cắt phần chữ hoặc chủ thể. Tắt Ken Burns vì scale(1.06) cũng
+     làm mất viền ảnh dù object-fit đã là contain. */
+  .hero-slider{aspect-ratio:3 / 1;}
+  .hero-slider .slide img{object-fit:contain; object-position:center; animation:none!important; transform:none!important;}
   /* Mũi tên và hàng chấm về chung một hàng dưới đáy, không đè lên chữ trong ảnh */
   .hero-controls{inset:auto 0 var(--sp-4) 0; display:flex; align-items:center; justify-content:center; gap:var(--sp-5);}
   .hero-arrow,.hero-dots{position:static; transform:none;}
@@ -148,7 +147,7 @@
    ===================================================================== */
 .svc-2{display:grid; grid-template-columns:1fr 1fr; gap:var(--gap-box);}
 .svc-2>:nth-child(2){margin-top:var(--sp-8);}   /* độ so le của mẫu */
-.svc__media{aspect-ratio:1200 / 640;}
+.svc__media{aspect-ratio:21 / 8;}
 .svc h3{font-size:var(--fs-lg); text-transform:uppercase; color:var(--brand-strong); margin:var(--sp-5) 0 var(--sp-4);}
 /* .check-list đã chuyển sang components.css — dùng ở nhiều trang, không riêng trang chủ */
 
