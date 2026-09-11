@@ -572,8 +572,11 @@ table.tariff tr:hover td{background:var(--bg-sunken);}
      Thanh toán, Hỗ trợ khách hàng, Cổ đông, Tin tức) không còn liệt kê hết một
      lúc, đỡ phải cuộn qua nhiều màn hình mới tới mục cần tìm. Ghi nhận từ
      khách 2026-09-10. */
-  .subnav{position:static; display:none; min-width:0; border:none; box-shadow:none; padding:0 0 var(--sp-3) var(--sp-6);}
-  .subnav a{padding:8px 0;}
+  /* Cân padding hai phía của menu con. Trước đây chỉ chừa bên trái nên nền
+     hover/focus chạy sát mép phải, còn chữ lại dính vào mép nền. */
+  .subnav{position:static; display:none; min-width:0; border:none; box-shadow:none;
+    padding:var(--sp-2) var(--sp-4) var(--sp-3);}
+  .subnav a{padding:10px var(--sp-3); border-radius:var(--radius-md); white-space:normal; line-height:1.4;}
   .has-sub>button[aria-expanded="true"]+.subnav{display:block;}
   /* :focus-within ở trên (dùng cho dropdown desktop) tự khớp luôn khi CHÍNH nút
      .has-sub đang được focus -- không riêng gì link con trong .subnav. Trên
@@ -585,7 +588,10 @@ table.tariff tr:hover td{background:var(--bg-sunken);}
   .has-sub>button{justify-content:space-between;}
   .has-sub__chevron{display:inline-block;}
   .has-sub>button[aria-expanded="true"] .has-sub__chevron{transform:rotate(180deg);}
-  .search-form .input{min-width:0;}
+  .search-form .input{min-width:0; height:52px;}
+  /* Nút gửi chỉ chứa icon: khóa vuông bằng đúng chiều cao ô tìm kiếm, không
+     kế thừa padding ngang của .btn-sm làm nút thành hình chữ nhật. */
+  .search-form .btn{width:52px; height:52px; min-width:52px; min-height:52px; padding:0; aspect-ratio:1;}
 }
 
 /* ============ PAGE HERO — đầu trang con ============ */
@@ -1124,3 +1130,9 @@ table.tariff tr:hover td{background:var(--bg-sunken);}
 .year-head__rule{flex:1; height:1px; background:var(--border-strong); align-self:flex-end;}
 /* Nhóm tài liệu của một năm, cách mốc năm kế tiếp bằng khoảng cách giữa các module */
 .year-group + .year-head{margin-top:var(--sp-8);}
+/* Ngăn Safari trên iPhone tự phóng to trang khi người dùng chạm vào trường nhập.
+   iOS chỉ auto-zoom khi cỡ chữ thực tế của input nhỏ hơn 16px. Giữ khả năng
+   pinch-to-zoom để không làm mất tính năng trợ năng của trình duyệt. */
+@media (max-width:1024px){
+  input,select,textarea{font-size:16px!important;}
+}
